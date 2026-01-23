@@ -35,7 +35,10 @@ function App() {
         </div>
       </aside>
       <div className={`${sidebarOpen ? 'mobile-sidebar-open' : 'mobile-sidebar-closed'} fw-medium fs-4 text-dark d-lg-none d-block`}>
-          <a className='text-decoration-none fs-1 fw-medium' href="/">SpendWise</a>
+          <div className='d-flex align-items-center'>
+            <img className='logo' src="./spendWise-logo.png" alt="" />
+            <a className='text-decoration-none fs-2 fw-medium mx-1' href="/">SpendWise</a>
+          </div>
           <ul className='list-unstyled my-4'>
             <li><a className='text-decoration-none text-dark' href="/">Dashboard</a></li>
             <li><a className='text-decoration-none text-dark' href="/analytics">Analytics</a></li>

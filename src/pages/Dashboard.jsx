@@ -200,14 +200,14 @@ function Dashboard() {
                 <div className='d-flex w-100 justify-content-between align-items-center'>
                     <h1 className='fs-lg-1 p-2' >Hello, {capitalize(username)}</h1>
                 </div>
-                <div style={{backgroundColor: "white"}} className='progress-board position-relative w-100 d-flex justify-content-evenly flex-column flex-xxl-row rounded-4 shadow-sm'>
+                <div style={{backgroundColor: "white"}} className='progress-board position-relative w-100 py-2 py-lg-0 d-flex justify-content-evenly flex-column flex-xxl-row rounded-4 shadow-sm'>
                     {!salary ? (
                         <div className='d-flex flex-column p-2 justify-content-center align-items-center'>
-                            <h3>Please, provide some data to get started</h3>
+                            <h3 className='information-text text-center mb-3'>Please, provide some data to get started</h3>
                             <Link to='personal-data' className='edit-no-data'>Enter data</Link>
                         </div>
                     ) : (
-                        <div className='position-relative w-100 py-5 p-2 d-flex justify-content-evenly flex-column flex-xxl-row'>
+                        <div className='position-relative w-100 py-5 px-0 px-md-1 d-flex gap-2 gap-lg-5 justify-content-evenly flex-column flex-xxl-row'>
                             <a href='personal-data' className='edit-1'>Edit</a>
                             <div className='d-flex align-items-center justify-content-center w-auto h-100'>
                             <AnimatedCircularProgress 
@@ -244,7 +244,7 @@ function Dashboard() {
                     )}
                 </div>
             </div>
-            <div className='w-100 h-50 d-flex flex-column flex-xl-row gap-4'>
+            <div className='w-100 h-50 d-flex flex-column flex-xxl-row gap-4'>
             <div style={{backgroundColor: "white"}} className='expenses d-flex flex-column rounded-4 w-100 w-lg-50 p-3 justify-content-between shadow'>
                 <div>
                     <div>
@@ -254,11 +254,18 @@ function Dashboard() {
                     <div className='d-flex flex-column w-100 h-100'>
                         {recentExpenses.length > 0 ? (
                             recentExpenses.map((expense) => (
-                                <div key={expense.id} className='recent-expense d-flex rounded-4 py-3 px-3 px-lg-4 justify-content-between align-items-center mb-2'>
-                                    <h1 className='recent-expense-number text-danger m-0'>- {formatNumber(expense.amount)} <span className=''>EGP</span></h1>
-                                    <span className='recent-date'>{formatDate(expense.date)}</span>
-                                    <h3 className='item m-0'>{expense.item}</h3>
-                                </div>
+                                <div key={expense.id} className="recent-expense d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
+                                        <div className="d-flex flex-column">
+                                            <div className="d-flex align-items-center mb-1">
+                                                <h3 className="recent-expense-item m-0">{expense.item}</h3>
+                                                <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
+                                            </div>
+                                            <h3 className="recent-expense-date m-0 fw-light">{formatDate(expense.date)}</h3>
+                                        </div>
+                                        <div className="d-flex align-items-center">
+                                            <h2 className="recent-expense-number m-0 text-danger mx-2">- {formatNumber(expense.amount)} <span>EGP</span></h2>
+                                        </div>
+                                    </div>
                             ))
                         ) : (
                             <div className='text-center py-4 text-muted'>
@@ -272,7 +279,7 @@ function Dashboard() {
                     <Link className='view-all' to="/expenses-table">View all</Link>
                 </div>
             </div>
-            <div style={{backgroundColor: "white"}} className='incomes d-flex flex-column rounded-4 w-100 w-lg-50 p-3 justify-content-between mb-5 shadow'>
+            <div style={{backgroundColor: "white"}} className='incomes d-flex flex-column w-100 w-lg-50 p-3 rounded-4 justify-content-between mb-5 shadow'>
                 <div>
                     <div>
                         <h3>Recent incomes</h3>
@@ -281,11 +288,18 @@ function Dashboard() {
                     <div className='d-flex flex-column w-100 h-100'>
                         {recentIncomes.length > 0 ? (
                             recentIncomes.map((income) => (
-                                <div key={income.id} className='recent-income d-flex rounded-4 py-3 px-3 px-lg-4 justify-content-between align-items-center mb-2'>
-                                    <h1 className='recent-income-number text-success m-0'>+ {formatNumber(income.amount)} <span className=''>EGP</span></h1>
-                                    <span className='recent-date'>{formatDate(income.date)}</span>
-                                    <h3 className='item m-0'>{income.item}</h3>
-                                </div>
+                                <div key={income.id} className="recent-income d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
+                                        <div className="d-flex flex-column">
+                                            <div className="d-flex align-items-center mb-1">
+                                                <h3 className="recent-income-item m-0">{income.item}</h3>
+                                                <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{income.category}</h3>
+                                            </div>
+                                            <h3 className="recent-income-date m-0 fw-light">{formatDate(income.date)}</h3>
+                                        </div>
+                                        <div className="d-flex align-items-center">
+                                            <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>
+                                        </div>
+                                    </div>
                             ))
                         ) : (
                             <div className='text-center py-4 text-muted'>

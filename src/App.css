@@ -73,6 +73,10 @@ article {
   width: fit-content;
 }
 
+.information-text {
+  font-size: 24px;
+}
+
 .progress-board {
     min-height: 376px;
     height: fit-content;
@@ -89,6 +93,12 @@ article {
 
 }
 
+@media (max-width: 1400px) {
+    aside {
+    height: 230vh;
+  }
+}
+
 @media (max-width: 1199px) {
 
     .edit-1 {
@@ -101,9 +111,7 @@ article {
       font-size: 20px;
   }
 
-  aside {
-    height: 200vh;
-  }
+
 
 }
 
@@ -114,6 +122,15 @@ article {
     background-color: #315ded00;
     box-shadow: none;
     margin-bottom: 36px;
+  }
+
+  .information-text {
+    font-size: 16px;
+  }
+
+  .edit-no-data {
+    padding: 4px 30px;
+    font-size: 20px;
   }
 }
 
@@ -133,27 +150,55 @@ article {
   position: absolute;
   background-color: white;
   height: 200vh;
-  width: 324px;
+  width: fit-content;
   padding: 16px;
   z-index: 100;
   margin: 0;
   transition: 0.3s;
 }
 
-.recent-expense-number, .recent-income-number {
+.expenses, .incomes {
+  height: 466px;
+  min-height: auto;
+}
+
+.recent-expense-number  {
   font-size: 36px;
 }
 
-.income-number {
-  color: #369E1C;
+.recent-income-number {
+  font-size: 36px;
 }
 
-.item {
+.recent-expense-category {
+  background-color: #d8dade;
+  font-size: 20px;
+  background-color: #e08686;
+}
+
+.recent-income-category {
+    background-color: #d8dade;
+    font-size: 20px;
+    background-color: #7dd567;
+}
+
+.recent-expense-item {
   font-size: 28px;
 }
 
-.recent-date {
+.recent-income-item {
+  font-size: 28px;
+}
+
+
+.recent-expense-date {
   font-size: 14px;
+  color: #696969;
+}
+
+.recent-income-date {
+  font-size: 14px;
+  color: #696969;
 }
 
 .add {
@@ -177,20 +222,32 @@ article {
   text-decoration: none;
 }
 
-.expenses, .incomes {
-  height: 466px;
-  min-height: auto;
+.recent-expense {
+  background-color: #e8cece;
+  border-radius: 10px !important;
+  padding: 12px 4px !important;
+}
+
+.recent-income {
+  background-color: #CDFFC0;
+  border-radius: 10px !important;
 }
 
 .recent-expense-number span, .recent-income-number span {
-  font-size: 16px;
+  font-size: 12px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 768px) {
+  .recent-expense-category, .recent-income-category {
+    font-size: 14px;
+  }
 
   .recent-expense-number, .recent-income-number {
     font-size: 22px;
   }
+}
+
+@media (max-width: 1199px) {
 
   .expenses, .incomes {
     height: auto;
@@ -199,10 +256,6 @@ article {
 
   .recent-expense-number span, .recent-income-number span {
     font-size: 12px;
-  }
-
-  .item {
-    font-size: 16px;
   }
 
   .add {
@@ -229,12 +282,35 @@ article {
   .recent-date {
     font-size: 12px;
   }
+
+  .recent-expense {
+    border-radius: 10px !important;
+  }
+
+  .recent-income {
+    border-radius: 10px !important;
+  }
+
+  .recent-expense-item {
+    font-size: 20px;
+  }
+
+  .recent-income-item {
+    font-size: 20px;
+  }
 }
 
-.recent-expense {
-  background-color: #e8cece;
-}
+@media (max-width: 380px) {
+  .recent-expense-number, .recent-income-number {
+    font-size: 20px;
+  }
 
-.recent-income {
-  background-color: #CDFFC0;
+  .recent-expense-item {
+    font-size: 18px;
+  }
+
+  .recent-income-item {
+    font-size: 18px;
+  }
+
 }

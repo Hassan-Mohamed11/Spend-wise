@@ -81,7 +81,7 @@ function ExpensesTable() {
                         <div className="d-flex flex-column">
                             {expenses.length > 0 ? (
                                 expenses.map((expense) => (
-                                    <div key={expense.id} className="expense d-flex justify-content-between p-2 p-md-3 w-100 rounded-3 align-items-center mb-3">
+                                    <div key={expense.id} className="expense d-flex justify-content-between p-2 p-md-3 w-100 rounded-3 align-items-center mb-2">
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="expense-item m-0">{expense.item}</h3>
@@ -90,7 +90,7 @@ function ExpensesTable() {
                                             <h3 className="date m-0 fw-light">{formatDate(expense.date)}</h3>
                                         </div>
                                         <div className="d-flex align-items-center">
-                                            <h2 className="expense-amount m-0 text-danger mx-2">- {formatNumber(expense.amount)}</h2>
+                                            <h2 className="expense-amount m-0 text-danger mx-2">- {formatNumber(expense.amount)} <span className="fs-6">EGP</span></h2>
                                             <button 
                                                 className="delete" 
                                                 onClick={() => handleDelete(expense.id)}

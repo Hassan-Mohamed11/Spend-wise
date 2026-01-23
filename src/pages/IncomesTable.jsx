@@ -81,7 +81,7 @@ function IncomesTable() {
                         <div className="d-flex flex-column">
                             {incomes.length > 0 ? (
                                 incomes.map((income) => (
-                                    <div key={income.id} className="income d-flex justify-content-between p-2 p-lg-3 w-100 rounded-3 align-items-center">
+                                    <div key={income.id} className="income d-flex justify-content-between p-2 p-lg-3 w-100 rounded-3 align-items-center mb-2">
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="income-item m-0">{income.item}</h3>

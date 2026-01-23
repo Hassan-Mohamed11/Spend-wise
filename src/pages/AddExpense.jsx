@@ -75,7 +75,7 @@ function AddExpense() {
                     </div>
                     <div className="w-100">
                         <h5>Item</h5>
-                        <input maxLength={18} value={item} onChange={(e) => setItem(e.target.value)} style={{height: "48px"}} className="input w-100 rounded-2 p-2" placeholder="Enter the name of the item" type="text" required />
+                        <input maxLength={14} value={item} onChange={(e) => setItem(e.target.value)} style={{height: "48px"}} className="input w-100 rounded-2 p-2" placeholder="Enter the name of the item" type="text" required />
                     </div>
                     <div className="w-100">
                         <h5>Category</h5>
