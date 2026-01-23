@@ -203,7 +203,7 @@ function Dashboard() {
                 <div style={{backgroundColor: "white"}} className='progress-board position-relative w-100 d-flex justify-content-evenly flex-column flex-xxl-row rounded-4 shadow-sm'>
                     {!salary ? (
                         <div className='d-flex flex-column p-2 justify-content-center align-items-center'>
-                            <p>Please, provide some data to get started</p>
+                            <h3>Please, provide some data to get started</h3>
                             <Link to='personal-data' className='edit-no-data'>Enter data</Link>
                         </div>
                     ) : (
