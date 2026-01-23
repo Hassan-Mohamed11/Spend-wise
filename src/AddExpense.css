@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Instrument Sans", sans-serif;
+}
+
+.expense-form {
+    height: 600px;
+    width: 50%;
+}
+
+@media (max-width: 1191px) {
+    .expense-form {
+      height: 600px;
+      width: 466px;
+  }
+}
+
+.input {
+  height: 48px;
+  background-color: rgb(239, 239, 239);
+  border: #6c6c6c;
+}
+
+.input:active {
+  border: 2px solid #6c6c6c !important;
+  box-shadow: none;
+}
+
+.amount-input {
+  height: 48px;
+  background-color: rgb(239, 239, 239);
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.reset {
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.add {
+  .edit-1 {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background-color: #ABD5f8;
+    color: #315DED;
+    padding: 4px 42px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.increment-button {
+  background-color: #ABD5f8;
+  min-width: 10%;
+  font-size: clamp(0.2rem, 24px, 2rem);
+  transition: 0.2s;
+}
+
+.increment-button:hover {
+  background-color: #83c7ff;
+}
+
+@media (max-width: 991px) {
+  .increment-button {
+    font-size: clamp(0.2rem, 18px, 2rem);
+  }
+}

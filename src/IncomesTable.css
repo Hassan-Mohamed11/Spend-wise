@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Instrument Sans", sans-serif;
+}
+
+.container {
+    min-height: 812px;
+    height: auto;
+}
+
+.title {
+    font-size: 32px;
+}
+
+.add-to-table-btn {
+    background-color: #ABD5f8;
+    color: #315DED;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.add-to-table-btn-sm {
+    display: none;
+    background-color: #ABD5f8;
+    color: #315DED;
+    border-radius: 8px;
+    font-size: 36px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 22px;
+}
+
+.clear-all-incomes {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.total-incomes {
+    font-size: 32px;
+    background-color: #CDFFC0;
+}
+
+.income {
+    background-color: #f2f2f2;
+}
+
+.category {
+    background-color: #d8dade;
+    font-size: 24px;
+}
+
+.date {
+    color: #9a9b9e;
+    font-size: 20px;
+}
+
+.trash {
+    width: 32px;
+}
+
+@media (max-width: 768px) {
+
+    .title {
+        font-size: 18px;
+    }
+
+    .total-incomes {
+        font-size: 20px;
+    }
+
+    .container {
+        margin-bottom: 120px;
+    }
+
+    .add-to-table-btn {
+        font-size: 18px;
+        position: absolute;
+    }
+
+    .clear-all-incomes {
+        font-size: 18px;
+    }
+
+    .income-amount {
+        font-size: 18px;
+    }
+
+    .income-item {
+        font-size: 18px;
+    }
+
+    .category {
+        font-size: 16px;
+    }
+
+    .date {
+        font-size: 14px;
+    }
+
+    .trash {
+    width: 26px;
+    }
+
+    .add-to-table-btn-sm {
+        display: block;
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+    }
+}
+
+@media (max-width: 368px) {
+    .income-amount {
+        font-size: 18px;
+    }
+}
