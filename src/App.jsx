@@ -38,8 +38,8 @@ function App() {
           <a className='text-decoration-none fs-1 fw-medium' href="/">SpendWise</a>
           <ul className='list-unstyled my-4'>
             <li><a className='text-decoration-none text-dark' href="/">Dashboard</a></li>
-            <li><a className='text-decoration-none text-dark' href="">Analytics</a></li>
-            <li><a className='text-decoration-none text-dark' href="">Settings</a></li>
+            <li><a className='text-decoration-none text-dark' href="/analytics">Analytics</a></li>
+            <li><a className='text-decoration-none text-dark' href="/settings">Settings</a></li>
           </ul>
         </div>
         {sidebarOpen && (
