@@ -234,7 +234,7 @@ article {
 }
 
 .recent-expense-number span, .recent-income-number span {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 @media (max-width: 768px) {

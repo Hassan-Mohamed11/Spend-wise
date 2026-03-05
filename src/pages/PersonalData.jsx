@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../PersonalData.css"
 
 function PersonalData() {
 
@@ -36,8 +37,8 @@ function PersonalData() {
         <div style={{height: "100vh"}} className="w-100 p-2 d-flex justify-content-center align-items-center">
             <form onSubmit={handleSubmit} style={{backgroundColor: "white"}} className="income-form p-4 rounded-3 d-flex flex-column align-items-end justify-content-between shadow">
                 <div className="w-100">
-                    <div className="d-flex justify-content-between">
-                        <h3>Edit your personal data</h3>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <h3 className="m-0">Edit your personal data</h3>
                         <a className="exit text-decoration-none btn-secondary" href="/">Go back</a>
                     </div>
                     <div className="w-100 mt-5">
@@ -64,7 +65,7 @@ function PersonalData() {
                         </select>
                     </div>
                 </div>
-                <input className="add" value="Add" type="submit" />
+                <input className="add" value="Save" type="submit" />
             </form>
         </div>
     )

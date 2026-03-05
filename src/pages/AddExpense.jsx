@@ -87,7 +87,6 @@ function AddExpense() {
                             <option value="Bills">Bills</option>
                             <option value="Transport">Transport</option>
                             <option value="Health">Health</option>
-                            <option value="Home goods">Home goods</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>

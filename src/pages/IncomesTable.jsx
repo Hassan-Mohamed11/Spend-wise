@@ -72,7 +72,7 @@ function IncomesTable() {
                                 <h2 className="total-incomes m-0 mx-1 mx-sm-3 text-success p-1 p-sm-2 rounded-2">{formatNumber(totalIncomes)} <span>EGP</span></h2>
                             </div>
                             <div className="d-flex align-items-center">
-                                <button disabled={incomes.length == 0} className="clear-all-incomes btn bg-transparent btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
+                                <button disabled={incomes.length == 0} className="clear-all-incomes btn btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
                                 <a className='add-to-table-btn px-3 py-1 py-lg-2' href="/add-income">Add</a>
                             </div>
                             
@@ -92,7 +92,7 @@ function IncomesTable() {
                                         <div className="d-flex align-items-center">
                                             <h2 className="income-amount m-0 text-success mx-2">+ {formatNumber(income.amount)} <span className="fs-6">EGP</span></h2>
                                             <button 
-                                                className="delete" 
+                                                className="delete bg-transparent" 
                                                 onClick={() => handleDelete(income.id)}
                                                 type="button"
                                             >

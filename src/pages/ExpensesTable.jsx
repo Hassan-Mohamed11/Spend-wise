@@ -72,7 +72,7 @@ function ExpensesTable() {
                                 <h2 className="total-expenses m-0 mx-1 mx-sm-3 text-danger rounded-2 p-1 p-xs-2">{formatNumber(totalExpenses)} <span>EGP</span></h2>
                             </div>
                             <div className="d-flex align-items-center">
-                                <button disabled={expenses.length == 0} className="clear-all-expenses btn bg-transparent btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
+                                <button disabled={expenses.length == 0} className="clear-all-expenses btn btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
                                 <a className='add-to-table-btn btn px-3 py-1 py-lg-2' href="/add-expense">Add</a>
                             </div>
                             
@@ -92,7 +92,7 @@ function ExpensesTable() {
                                         <div className="d-flex align-items-center">
                                             <h2 className="expense-amount m-0 text-danger mx-2">- {formatNumber(expense.amount)} <span className="fs-6">EGP</span></h2>
                                             <button 
-                                                className="delete" 
+                                                className="delete bg-transparent" 
                                                 onClick={() => handleDelete(expense.id)}
                                                 type="button"
                                             >
