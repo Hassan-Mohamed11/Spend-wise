@@ -218,7 +218,7 @@ function Dashboard() {
                                 duration={2000}
                             />          
                             </div>
-                            <div className='d-flex w-md-auto w-75 mt-xl-0 mt-4 justify-content-evenly text-dark'>
+                            <div className='d-flex w-md-auto w-100 mt-xl-0 mt-4 justify-content-evenly text-dark'>
                                 <div className='data-container d-flex flex-column align-items-start justify-content-center w-auto'>
                                     <div>
                                         <h5>Current budget</h5>
@@ -254,7 +254,7 @@ function Dashboard() {
                     <div className='d-flex flex-column w-100 h-100'>
                         {recentExpenses.length > 0 ? (
                             recentExpenses.map((expense) => (
-                                <div key={expense.id} className="recent-expense d-flex justify-content-between p-2 rounded-4 p-md-3 w-100 align-items-center mb-2">
+                                <div key={expense.id} className="recent-expense d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="recent-expense-item m-0">{expense.item}</h3>
@@ -288,7 +288,7 @@ function Dashboard() {
                     <div className='d-flex flex-column w-100 h-100'>
                         {recentIncomes.length > 0 ? (
                             recentIncomes.map((income) => (
-                                <div key={income.id} className="recent-income d-flex justify-content-between rounded-4 p-2 p-md-3 w-100 align-items-center mb-2">
+                                <div key={income.id} className="recent-income d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="recent-income-item m-0">{income.item}</h3>

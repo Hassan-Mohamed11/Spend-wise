@@ -84,11 +84,11 @@ article {
 
 @media (max-width: 768px) {
   .data-container h1 {
-    font-size: clamp(0.8rem, 26px, 2rem);
+    font-size: 32px;
   }
 
   .data-container h5 {
-    font-size: clamp(0.5rem, 16px, 1.2rem);
+    font-size: 18px;
   }
 
 }
@@ -224,13 +224,12 @@ article {
 
 .recent-expense {
   background-color: #e8cece;
-  border-radius: 10px !important;
-  padding: 12px 4px !important;
+  border-radius: 18px;
 }
 
 .recent-income {
   background-color: #CDFFC0;
-  border-radius: 10px !important;
+  border-radius: 18px;
 }
 
 .recent-expense-number span, .recent-income-number span {
