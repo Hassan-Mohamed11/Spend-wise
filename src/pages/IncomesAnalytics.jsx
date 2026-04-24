@@ -238,7 +238,7 @@ export default function IncomesAnalytics() {
                 </div>
                 
                 <div className="categories d-flex flex-column align-items-center gap-1">
-                    <div className="incomes-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#AFC2FF"}}> 
+                    <div className="income-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#AFC2FF"}}> 
                         <div className="d-flex align-items-center">
                             <div style={{backgroundColor: "#315DED", marginRight: "16px"}} className="dot"></div>
                             <h3 style={{color: "#315DED"}} className="mx-2 m-0">Freelance</h3>
@@ -248,7 +248,7 @@ export default function IncomesAnalytics() {
                         </div>
                     </div>
                     
-                    <div className="spending-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#FFDE97"}}> 
+                    <div className="income-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#FFDE97"}}> 
                         <div className="d-flex align-items-center">
                             <div style={{backgroundColor: "#B47B00", marginRight: "16px"}} className="dot"></div>
                             <h3 style={{color: "#B47B00"}} className="mx-2 m-0">Business</h3>
@@ -258,7 +258,7 @@ export default function IncomesAnalytics() {
                         </div>
                     </div>
                     
-                    <div className="spending-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#C3FFB4"}}> 
+                    <div className="income-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#C3FFB4"}}> 
                         <div className="d-flex align-items-center">
                             <div style={{backgroundColor: "#369E1C", marginRight: "16px"}} className="dot"></div>
                             <h3 style={{color: "#369E1C"}} className="mx-2 m-0">Investment</h3>
@@ -268,7 +268,7 @@ export default function IncomesAnalytics() {
                         </div>
                     </div>
                     
-                    <div className="spending-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#FFB2B2"}}> 
+                    <div className="income-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#FFB2B2"}}> 
                         <div className="d-flex align-items-center">
                             <div style={{backgroundColor: "#D04D4D", marginRight: "16px"}} className="dot"></div>
                             <h3 style={{color: "#D04D4D"}} className="mx-2 m-0">Sell of an item</h3>
@@ -278,7 +278,7 @@ export default function IncomesAnalytics() {
                         </div>
                     </div>
                     
-                    <div className="spending-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#DDC2FF"}}> 
+                    <div className="income-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#DDC2FF"}}> 
                         <div className="d-flex align-items-center">
                             <div style={{backgroundColor: "#6C3BA9", marginRight: "16px"}} className="dot"></div>
                             <h3 style={{color: "#6C3BA9"}} className="mx-2 m-0">Other</h3>
