@@ -82,7 +82,7 @@ function AddIncome() {
                             <option value="">Choose category</option>
                             <option value="Freelance">Freelance</option>
                             <option value="Bussiness">Business</option>
-                            <option value="Investiment">Investiment</option>
+                            <option value="Investment">Investment</option>
                             <option value="Sell of an item">Sell of an item</option>
                             <option value="Other">Other</option>
                         </select>

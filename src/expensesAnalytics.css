@@ -1,0 +1,36 @@
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+}
+
+.categories {
+    width: 50% !important;
+}
+
+.spending-category {
+    min-width: 75%;
+}
+
+.amount {
+    background-color: #ffffff56;
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 1199px) {
+    .categories {
+        width: 100% !important;
+    }
+
+    .category {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 408px) {
+    .spending-category {
+        min-width: 100%;
+    }
+}

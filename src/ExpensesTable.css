@@ -23,6 +23,7 @@
     text-decoration: none;
     width: fit-content;
     height: fit-content;
+    transition: 0.4s;
 }
 
 .add-to-table-btn-sm {
@@ -34,6 +35,10 @@
     font-weight: 600;
     text-decoration: none;
     padding: 5px 22px;
+}
+
+.add-to-table-btn:hover {
+    background-color: #bee2ff;
 }
 
 .clear-all-expenses {

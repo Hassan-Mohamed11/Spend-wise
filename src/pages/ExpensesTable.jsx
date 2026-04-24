@@ -73,7 +73,7 @@ function ExpensesTable() {
                             </div>
                             <div className="d-flex align-items-center">
                                 <button disabled={expenses.length == 0} className="clear-all-expenses btn btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
-                                <a className='add-to-table-btn btn px-3 py-1 py-lg-2' href="/add-expense">Add</a>
+                                <a className='add-to-table-btn px-3 py-1 py-lg-2' href="/add-expense">Add</a>
                             </div>
                             
                         </div>

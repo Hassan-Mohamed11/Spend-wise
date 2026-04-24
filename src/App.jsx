@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 import './App.css'
-import { Link, Routes, Route, NavLink } from 'react-router-dom'
+import { Link, Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import AddExpense from './pages/AddExpense'
 import Dashboard from './pages/Dashboard'
@@ -9,12 +9,15 @@ import PersonalData from './pages/PersonalData'
 import ExpensesTable from './pages/ExpensesTable'
 import IncomesTable from './pages/IncomesTable'
 import Settings from './pages/Settings'
-import Analytics from './pages/Analytics'
+import ExpensesAnalytics from './pages/ExpensesAnalytics'
+import IncomesAnalytics from './pages/IncomesAnalytics'
 
 
 function App() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [analyticsOpen, setAnalyticsOpen] = useState(false)
+  const location = useLocation();
 
   return (
     <div className='d-flex flex-column flex-lg-row'>
@@ -22,15 +25,19 @@ function App() {
         <div className='d-flex justify-content-between w-100'>
           <div className='d-flex align-items-center'>
             <img className='logo' src="./spendWise-logo.png" alt="" />
-            <a className='text-decoration-none fs-2 fw-medium mx-1' href="/">SpendWise</a>
+            <Link className='text-decoration-none fs-2 fw-medium mx-1' to="/">SpendWise</Link>
           </div>
           <img className='d-block d-lg-none' onClick={() => setSidebarOpen(!sidebarOpen)} width={38} src="./menu.png" alt="" />
         </div>
         <div className="my-4 fw-medium fs-4 text-dark d-lg-block d-none w-100">
           <ul className='list-unstyled w-100'>
-            <li className=''><NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Dashboard</NavLink></li>
-            <li className=''><NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/analytics">Analytics</NavLink></li>
-            <li className=''><NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/settings">Settings</NavLink></li>
+            <li><NavLink onClick={() => setAnalyticsOpen(false)} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Dashboard</NavLink></li>
+            <li><NavLink onClick={() => setAnalyticsOpen(true)} className={({ isActive }) => location.pathname === "/expenses-analytics" || location.pathname === "/incomes-analytics"  ? "nav-link active" : "nav-link"} to="/expenses-analytics">Analytics</NavLink></li>
+            <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-2`}>
+              <NavLink className={({ isActive }) => isActive ? "analytic-link open" : "analytic-link text-dark"} to="/expenses-analytics">Expenses</NavLink>
+              <NavLink className={({ isActive }) => isActive ? "analytic-link open" : "analytic-link text-dark"}  to="/incomes-analytics">Incomes</NavLink>
+            </div>
+            <li className=''><NavLink onClick={() => setAnalyticsOpen(false)} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/settings">Settings</NavLink></li>
           </ul>
         </div>
       </aside>
@@ -40,9 +47,13 @@ function App() {
             <a className='text-decoration-none fs-2 fw-medium mx-1' href="/">SpendWise</a>
           </div>
           <ul className='list-unstyled my-4'>
-            <li><a className='text-decoration-none text-dark' href="/">Dashboard</a></li>
-            <li><a className='text-decoration-none text-dark' href="/analytics">Analytics</a></li>
-            <li><a className='text-decoration-none text-dark' href="/settings">Settings</a></li>
+            <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark'>Dashboard</Link></li>
+            <li className='my-2'><Link onClick={() => setAnalyticsOpen(true)} className='text-decoration-none text-dark' >Analytics</Link></li>
+            <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-1 rounded-2 m-0`}>
+              <NavLink className="text-decoration-none text-dark my-1" to="/expenses-analytics">Expenses</NavLink>
+              <NavLink className="text-decoration-none text-dark my-1" to="/incomes-analytics">Incomes</NavLink>
+            </div>
+            <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark' to="/settings">Settings</Link></li>
           </ul>
         </div>
         {sidebarOpen && (
@@ -61,7 +72,8 @@ function App() {
           <Route path='/expenses-table' element={<ExpensesTable />} />
           <Route path='/incomes-table' element={<IncomesTable />} />
           <Route path='/settings' element={<Settings />} />
-          <Route path='/analytics' element={<Analytics />} />
+          <Route path='/expenses-analytics' element={<ExpensesAnalytics />} />
+          <Route path='/incomes-analytics' element={<IncomesAnalytics />} />
         </Routes>
       </article>
     </div>

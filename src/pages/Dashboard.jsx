@@ -123,6 +123,7 @@ function Dashboard() {
         
         // Get last reset date from localStorage
         const lastResetDate = localStorage.getItem('lastResetDate');
+        const alertShown = localStorage.getItem('resetAlertShown');
         const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
         
@@ -131,14 +132,26 @@ function Dashboard() {
             const currentMonthKey = `${currentYear}-${currentMonth}`;
             
             if (lastResetDate !== currentMonthKey) {
+                // Reset expenses and incomes
+                localStorage.setItem('expenses', JSON.stringify([]));
+                localStorage.setItem('incomes', JSON.stringify([]));
+                localStorage.setItem('lastResetDate', currentMonthKey);
                 
-                // Show alert
-                setShowAlert(true);
-                setAlertMessage('New month started! Budget has been reset.');
-                setTimeout(() => setShowAlert(false), 3000);
+                // Clear the recent expenses and incomes from state
+                setRecentExpenses([]);
+                setRecentIncomes([]);
+                setCurrentBudget(salary);
+                
+                // Show alert only if not shown yet for this month
+                if (alertShown !== currentMonthKey) {
+                    setShowAlert(true);
+                    setAlertMessage("New month started! Budget has been reset. Don't forget to <span style={{backgroundColor: '#315DED'}}>spend wise</span>");
+                    setTimeout(() => setShowAlert(false), 3000);
+                    localStorage.setItem('resetAlertShown', currentMonthKey);
+                }
             }
         }
-    }, [salaryDate]);
+    }, [salaryDate, salary]);
 
     // Format next salary date
     const formatNextSalaryDate = () => {
@@ -214,7 +227,7 @@ function Dashboard() {
                                 percentage={calculateBudgetPercentage()} 
                                 label="Budget"
                                 size={280}      
-                                strokeWidth={30}
+                                strokeWidth={22}
                                 duration={2000}
                             />          
                             </div>
@@ -245,7 +258,7 @@ function Dashboard() {
                 </div>
             </div>
             <div className='w-100 h-50 d-flex flex-column flex-xxl-row gap-4'>
-            <div style={{backgroundColor: "white"}} className='expenses d-flex flex-column rounded-4 w-100 w-lg-50 p-3 justify-content-between shadow'>
+            <div style={{backgroundColor: "white"}} className='expenses d-flex-column rounded-4 w-100 w-lg-50 p-3 justify-content-between shadow'>
                 <div>
                     <div>
                         <h3>Recent expenses</h3>
@@ -255,17 +268,17 @@ function Dashboard() {
                         {recentExpenses.length > 0 ? (
                             recentExpenses.map((expense) => (
                                 <div key={expense.id} className="recent-expense d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
-                                        <div className="d-flex flex-column">
-                                            <div className="d-flex align-items-center mb-1">
-                                                <h3 className="recent-expense-item m-0">{expense.item}</h3>
-                                                <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
-                                            </div>
-                                            <h3 className="recent-expense-date m-0 fw-light">{formatDate(expense.date)}</h3>
+                                    <div className="d-flex flex-column">
+                                        <div className="d-flex align-items-center mb-1">
+                                            <h3 className="recent-expense-item m-0">{expense.item}</h3>
+                                            <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
                                         </div>
-                                        <div className="d-flex align-items-center">
-                                            <h2 className="recent-expense-number m-0 text-danger mx-2">- {formatNumber(expense.amount)} <span>EGP</span></h2>
-                                        </div>
+                                        <h3 className="recent-expense-date m-0 fw-light">{formatDate(expense.date)}</h3>
                                     </div>
+                                    <div className="d-flex align-items-center">
+                                        <h2 className="recent-expense-number m-0 text-danger mx-2"> - {formatNumber(expense.amount)} <span>EGP</span></h2>
+                                    </div>
+                                </div>
                             ))
                         ) : (
                             <div className='text-center py-4 text-muted'>
@@ -285,34 +298,34 @@ function Dashboard() {
                         <h3>Recent incomes</h3>
                         <hr />
                     </div>
-                    <div className='d-flex flex-column w-100 h-100'>
-                        {recentIncomes.length > 0 ? (
-                            recentIncomes.map((income) => (
-                                <div key={income.id} className="recent-income d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
-                                        <div className="d-flex flex-column">
-                                            <div className="d-flex align-items-center mb-1">
-                                                <h3 className="recent-income-item m-0">{income.item}</h3>
-                                                <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{income.category}</h3>
+                        <div className='d-flex flex-column w-100 h-100'>
+                            {recentIncomes.length > 0 ? (
+                                recentIncomes.map((income) => (
+                                    <div key={income.id} className="recent-income d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
+                                            <div className="d-flex flex-column">
+                                                <div className="d-flex align-items-center mb-1">
+                                                    <h3 className="recent-income-item m-0">{income.item}</h3>
+                                                    <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{income.category}</h3>
+                                                </div>
+                                                <h3 className="recent-income-date m-0 fw-light">{formatDate(income.date)}</h3>
                                             </div>
-                                            <h3 className="recent-income-date m-0 fw-light">{formatDate(income.date)}</h3>
+                                            <div className="d-flex align-items-center">
+                                                <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>
+                                            </div>
                                         </div>
-                                        <div className="d-flex align-items-center">
-                                            <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>
-                                        </div>
-                                    </div>
-                            ))
-                        ) : (
-                            <div className='text-center py-4 text-muted'>
-                                <p>No incomes yet. Start tracking your spending!</p>
-                            </div>
-                        )}
+                                ))
+                            ) : (
+                                <div className='text-center py-4 text-muted'>
+                                    <p>No incomes yet. Start tracking your spending!</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    <div className='actions d-flex w-100  h-auto gap-2 justify-content-end'>
+                        <Link className='add' to="/add-income">Add</Link>
+                        <Link className='view-all' to="/incomes-table">View all</Link>
                     </div>
                 </div>
-                <div className='actions d-flex w-100  h-auto gap-2 justify-content-end'>
-                    <Link className='add' to="/add-income">Add</Link>
-                    <Link className='view-all' to="/incomes-table">View all</Link>
-                </div>
-            </div>
             </div>
         </div>
     )
