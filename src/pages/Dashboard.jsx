@@ -258,40 +258,40 @@ function Dashboard() {
                 </div>
             </div>
             <div className='w-100 h-50 d-flex flex-column flex-xxl-row gap-4'>
-            <div style={{backgroundColor: "white"}} className='expenses d-flex-column rounded-4 w-100 w-lg-50 p-3 justify-content-between shadow'>
-                <div>
+                <div style={{backgroundColor: "white"}} className='expenses d-flex flex-column w-100 w-lg-50 p-3 rounded-4 justify-content-between mb-5 shadow'>
                     <div>
-                        <h3>Recent expenses</h3>
-                        <hr />
-                    </div>
-                    <div className='d-flex flex-column w-100 h-100'>
-                        {recentExpenses.length > 0 ? (
-                            recentExpenses.map((expense) => (
-                                <div key={expense.id} className="recent-expense d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
-                                    <div className="d-flex flex-column">
-                                        <div className="d-flex align-items-center mb-1">
-                                            <h3 className="recent-expense-item m-0">{expense.item}</h3>
-                                            <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
+                        <div>
+                            <h3>Recent expenses</h3>
+                            <hr />
+                        </div>
+                        <div className='d-flex flex-column w-100 h-100'>
+                            {recentExpenses.length > 0 ? (
+                                recentExpenses.map((expense) => (
+                                    <div key={expense.id} className="recent-expense d-flex justify-content-between p-2 p-md-3 w-100 align-items-center mb-2">
+                                        <div className="d-flex flex-column">
+                                            <div className="d-flex align-items-center mb-1">
+                                                <h3 className="recent-expense-item m-0">{expense.item}</h3>
+                                                <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
+                                            </div>
+                                            <h3 className="recent-expense-date m-0 fw-light">{formatDate(expense.date)}</h3>
                                         </div>
-                                        <h3 className="recent-expense-date m-0 fw-light">{formatDate(expense.date)}</h3>
+                                        <div className="d-flex align-items-center">
+                                            <h2 className="recent-expense-number m-0 text-danger mx-2"> - {formatNumber(expense.amount)} <span>EGP</span></h2>
+                                        </div>
                                     </div>
-                                    <div className="d-flex align-items-center">
-                                        <h2 className="recent-expense-number m-0 text-danger mx-2"> - {formatNumber(expense.amount)} <span>EGP</span></h2>
-                                    </div>
+                                ))
+                            ) : (
+                                <div className='text-center py-4 text-muted'>
+                                    <p>No expenses yet. Start tracking your spending!</p>
                                 </div>
-                            ))
-                        ) : (
-                            <div className='text-center py-4 text-muted'>
-                                <p>No expenses yet. Start tracking your spending!</p>
-                            </div>
-                        )}
+                            )}
+                        </div>
+                    </div>
+                    <div className='actions d-flex w-100 h-auto gap-2 justify-content-end mt-1'>
+                        <Link className='add' to="/add-expense">Add</Link>
+                        <Link className='view-all' to="/expenses-table">View all</Link>
                     </div>
                 </div>
-                <div className='actions d-flex w-100 h-auto gap-2 justify-content-end mt-1'>
-                    <Link className='add' to="/add-expense">Add</Link>
-                    <Link className='view-all' to="/expenses-table">View all</Link>
-                </div>
-            </div>
             <div style={{backgroundColor: "white"}} className='incomes d-flex flex-column w-100 w-lg-50 p-3 rounded-4 justify-content-between mb-5 shadow'>
                 <div>
                     <div>
