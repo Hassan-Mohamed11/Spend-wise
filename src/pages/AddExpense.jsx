@@ -65,12 +65,12 @@ function AddExpense() {
                             <button onClick={() => setAmount(0)} className="reset btn btn-danger text-light" type="button">Reset</button>
                         </div>
                         <div className="d-flex w-100 justify-content-between">
-                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 5)}>+5</button>
-                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 10)}>+10</button>
-                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 20)}>+20</button>
-                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 50)}>+50</button>
-                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 100)}>+100</button>
-                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 1000)}>+1000</button>
+                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 5)}>+ 5</button>
+                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 10)}>+ 10</button>
+                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 20)}>+ 20</button>
+                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 50)}>+ 50</button>
+                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 100)}>+ 100</button>
+                            <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 1000)}>+ 1000</button>
                         </div>
                     </div>
                     <div className="w-100 my-1">
