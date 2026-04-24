@@ -57,7 +57,7 @@ function AddIncome() {
                         <h3>Add income</h3>
                         <a className="exit text-decoration-none" href="/">Go back</a>
                     </div>
-                    <div className="w-100 mt-5">
+                    <div className="w-100 mt-5 mb-1">
                         <h5>Amount</h5>
                         <div className="d-flex">
                             <input min={1} onChange={(e) => setAmount(Math.max(0, (Number(e.target.value))))} style={{height: "48px"}} value={amount} className="amount-input w-100 p-2" placeholder="Enter the amount of the item" type="number" required />
@@ -72,11 +72,11 @@ function AddIncome() {
                             <button className="increment-button btn p-1 p-md-2 my-2 text-primary fw-medium" type="button" onClick={() => setAmount(amount + 1000)}>+1000</button>
                         </div>
                     </div>
-                    <div className="w-100">
+                    <div className="w-100 my-1">
                         <h5>Item</h5>
                         <input maxLength={14} value={item} onChange={(e) => setItem(e.target.value)} style={{height: "48px"}} className="input w-100 rounded-2 p-2" placeholder="Enter the name of the item" type="text" required />
                     </div>
-                    <div className="w-100">
+                    <div className="w-100 my-3">
                         <h5>Category</h5>
                         <select value={category} onChange={(e) => setCategory(e.target.value)} style={{height: "48px"}} className="input w-100 rounded-2 p-2" name="" id="" required>
                             <option value="">Choose category</option>
