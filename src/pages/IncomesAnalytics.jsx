@@ -303,9 +303,9 @@ export default function IncomesAnalytics() {
                                     <div className="d-flex flex-column">
                                         <div className="d-flex align-items-center mb-1">
                                             <h3 className="recent-income-item m-0">{income.item}</h3>
-                                            <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{income.category}</h3>
+                                            <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 rounded-2">{income.category}</h3>
                                         </div>
-                                        <h3 className="recent-income-date m-0 fw-light">{formatDate(income.date)}</h3>
+                                        <h3 className="recent-income-date m-0 fw-semibold">{formatDate(income.date)}</h3>
                                     </div>
                                     <div className="d-flex align-items-center">
                                         <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>

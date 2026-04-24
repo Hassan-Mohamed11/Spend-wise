@@ -72,7 +72,7 @@ function ExpensesTable() {
                                 <h2 className="total-expenses m-0 mx-1 mx-sm-3 text-danger rounded-2 p-1 p-xs-2">{formatNumber(totalExpenses)} <span>EGP</span></h2>
                             </div>
                             <div className="d-flex align-items-center">
-                                <button disabled={expenses.length == 0} className="clear-all-expenses btn btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
+                                <button disabled={expenses.length == 0} className="clear-all-expenses btn btn-outline-danger border-2 rounded-3 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
                                 <a className='add-to-table-btn px-3 py-1 py-lg-2' href="/add-expense">Add</a>
                             </div>
                             
@@ -85,9 +85,9 @@ function ExpensesTable() {
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="expense-item m-0">{expense.item}</h3>
-                                                <h3 className="category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
+                                                <h3 className="expense-category-item m-0 mx-1 mx-lg-1 p-1 rounded-2">{expense.category}</h3>
                                             </div>
-                                            <h3 className="date m-0 fw-light">{formatDate(expense.date)}</h3>
+                                            <h3 className="date m-0 fw-semibold">{formatDate(expense.date)}</h3>
                                         </div>
                                         <div className="d-flex align-items-center">
                                             <h2 className="expense-amount m-0 text-danger mx-2">- {formatNumber(expense.amount)} <span className="fs-6">EGP</span></h2>

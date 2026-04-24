@@ -9,7 +9,8 @@
 }
 
 .spending-category {
-    min-width: 75%;
+    width: 75%;
+    min-width: 400px;
 }
 
 .amount {
@@ -29,8 +30,14 @@
     }
 }
 
-@media (max-width: 408px) {
+@media (max-width: 452px) {
     .spending-category {
         min-width: 100%;
     }
 }
+
+.recent-expense-date {
+  font-size: 14px;
+  color: #525252;
+}
+

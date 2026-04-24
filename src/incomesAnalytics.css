@@ -1,9 +1,15 @@
 .income-category {
-    min-width: 75%;
+    width: 75%;
+    min-width: 400px;
 }
 
 .categories {
     width: 50% !important;
+}
+
+.recent-income-date {
+  font-size: 14px;
+  color: #525252;
 }
 
 @media (max-width: 1199px) {
@@ -16,7 +22,13 @@
     }
 }
 
-@media (max-width: 408px) {
+@media (max-width: 768px) {
+    .recent-income-date {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 452px) {
     .income-category {
         min-width: 100%;
     }

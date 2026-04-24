@@ -50,12 +50,13 @@
     background-color: #e8e8e8;
 }
 
-.category {
-    font-size: 24px;
+.income-category-item {
+    font-size: 18px;
+    background-color: #cecece;
 }
 
 .date {
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .trash {
@@ -93,8 +94,8 @@
         font-size: 18px;
     }
 
-    .category {
-        font-size: 16px;
+    .income-category-item {
+        font-size: 12px;
     }
 
     .date {

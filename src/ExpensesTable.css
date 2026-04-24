@@ -59,9 +59,9 @@
     font-size: 28px;
 }
 
-.category {
+.expense-category-item {
     background-color: #cecece;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .expense-amount {
@@ -104,8 +104,8 @@
         font-size: 18px;
     }
 
-    .category {
-        font-size: 16px;
+    .expense-category-item {
+        font-size: 12px;
     }
 
     .date {

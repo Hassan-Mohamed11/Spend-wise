@@ -47,7 +47,7 @@ function App() {
             <a className='text-decoration-none fs-2 fw-medium mx-1' href="/">SpendWise</a>
           </div>
           <ul className='list-unstyled my-4'>
-            <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark'>Dashboard</Link></li>
+            <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark' to="/">Dashboard</Link></li>
             <li className='my-2'><Link onClick={() => setAnalyticsOpen(true)} className='text-decoration-none text-dark' >Analytics</Link></li>
             <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-1 rounded-2 m-0`}>
               <NavLink className="text-decoration-none text-dark my-1" to="/expenses-analytics">Expenses</NavLink>

@@ -72,7 +72,7 @@ function IncomesTable() {
                                 <h2 className="total-incomes m-0 mx-1 mx-sm-3 text-success p-1 p-sm-2 rounded-2">{formatNumber(totalIncomes)} <span>EGP</span></h2>
                             </div>
                             <div className="d-flex align-items-center">
-                                <button disabled={incomes.length == 0} className="clear-all-incomes btn btn-outline-danger border-2 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
+                                <button disabled={incomes.length == 0} className="clear-all-incomes btn btn-outline-danger border-2 rounded-3 px-3 py-1 py-lg-2 mx-0 mx-sm-2" onClick={() => handleClearAll()}>Clear</button>
                                 <a className='add-to-table-btn px-3 py-1 py-lg-2' href="/add-income">Add</a>
                             </div>
                             
@@ -85,9 +85,9 @@ function IncomesTable() {
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="income-item m-0">{income.item}</h3>
-                                                <h3 className="category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{income.category}</h3>
+                                                <h3 className="income-category-item m-0 mx-1 mx-lg-1 p-1 rounded-2">{income.category}</h3>
                                             </div>
-                                            <h3 className="date m-0 fw-light">{formatDate(income.date)}</h3>
+                                            <h3 className="date m-0 fw-semibld">{formatDate(income.date)}</h3>
                                         </div>
                                         <div className="d-flex align-items-center">
                                             <h2 className="income-amount m-0 text-success mx-2">+ {formatNumber(income.amount)} <span className="fs-6">EGP</span></h2>

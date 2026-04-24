@@ -258,7 +258,7 @@ function Dashboard() {
                 </div>
             </div>
             <div className='w-100 h-50 d-flex flex-column flex-xxl-row gap-4'>
-                <div style={{backgroundColor: "white"}} className='expenses d-flex flex-column w-100 w-lg-50 p-3 rounded-4 justify-content-between mb-5 shadow'>
+                <div style={{backgroundColor: "white"}} className='expenses d-flex flex-column w-100 w-lg-50 p-3 rounded-4 justify-content-between shadow'>
                     <div>
                         <div>
                             <h3>Recent expenses</h3>
@@ -271,9 +271,9 @@ function Dashboard() {
                                         <div className="d-flex flex-column">
                                             <div className="d-flex align-items-center mb-1">
                                                 <h3 className="recent-expense-item m-0">{expense.item}</h3>
-                                                <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{expense.category}</h3>
+                                                <h3 className="recent-expense-category m-0 mx-1 mx-lg-1 p-1 rounded-2 fw-semibold">{expense.category}</h3>
                                             </div>
-                                            <h3 className="recent-expense-date m-0 fw-light">{formatDate(expense.date)}</h3>
+                                            <h3 className="recent-expense-date m-0 fw-semibold">{formatDate(expense.date)}</h3>
                                         </div>
                                         <div className="d-flex align-items-center">
                                             <h2 className="recent-expense-number m-0 text-danger mx-2"> - {formatNumber(expense.amount)} <span>EGP</span></h2>
@@ -305,9 +305,9 @@ function Dashboard() {
                                             <div className="d-flex flex-column">
                                                 <div className="d-flex align-items-center mb-1">
                                                     <h3 className="recent-income-item m-0">{income.item}</h3>
-                                                    <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 p-lg-2 rounded-2">{income.category}</h3>
+                                                    <h3 className="recent-income-category m-0 mx-1 mx-lg-1 p-1 rounded-2 fw-semibold">{income.category}</h3>
                                                 </div>
-                                                <h3 className="recent-income-date m-0 fw-light">{formatDate(income.date)}</h3>
+                                                <h3 className="recent-income-date m-0 fw-semibold">{formatDate(income.date)}</h3>
                                             </div>
                                             <div className="d-flex align-items-center">
                                                 <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>
@@ -321,7 +321,7 @@ function Dashboard() {
                             )}
                         </div>
                     </div>
-                    <div className='actions d-flex w-100  h-auto gap-2 justify-content-end'>
+                    <div className='actions d-flex w-100 h-auto gap-2 justify-content-end'>
                         <Link className='add' to="/add-income">Add</Link>
                         <Link className='view-all' to="/incomes-table">View all</Link>
                     </div>

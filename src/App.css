@@ -34,16 +34,13 @@ aside {
 .analytic-link {
   background-color: #ffffff00;
   border-radius: 6px;
-
-  text-decoration: 0;
+  text-decoration: none;
 }
 
 .analytic-link.open {
   color: #315DED;
   border-radius: 6px;
-  padding: 6px;
-   padding-right: 12px;
-  text-decoration: 0;
+  text-decoration: none;
 }
 
 article {
@@ -188,7 +185,6 @@ article {
 
 .expenses, .incomes {
   height: 466px;
-  min-height: auto;
 }
 
 .recent-expense-number  {
@@ -200,15 +196,13 @@ article {
 }
 
 .recent-expense-category {
-  background-color: #d8dade;
   font-size: 16px;
-  background-color: #e08686;
+  background-color: #da7272;
 }
 
 .recent-income-category {
-    background-color: #d8dade;
-    font-size: 16px;
-    background-color: #7dd567;
+  font-size: 16px;
+  background-color: #7dd567;
 }
 
 .recent-expense-item {
@@ -222,7 +216,7 @@ article {
 
 .recent-expense-date {
   font-size: 14px;
-  color: #696969;
+  color: #525252;
 }
 
 .recent-income-date {
@@ -252,7 +246,7 @@ article {
 }
 
 .recent-expense {
-  background-color: #e8cece;
+  background-color: #ffb2b2;
   border-radius: 18px;
 }
 
@@ -279,7 +273,7 @@ article {
 
   .expenses, .incomes {
     height: auto;
-    min-height: 396px;
+    min-height: 366px;
   }
 
   .recent-expense-number span, .recent-income-number span {
@@ -307,8 +301,12 @@ article {
     text-decoration: none;
   }
 
-  .recent-date {
+  .recent-income-date {
     font-size: 12px;
+  }
+
+  .recent-expense-date {
+    font-size: 12px !important; 
   }
 
   .recent-expense {
@@ -320,11 +318,11 @@ article {
   }
 
   .recent-expense-item {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .recent-income-item {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 
