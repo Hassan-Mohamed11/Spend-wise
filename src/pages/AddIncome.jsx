@@ -81,7 +81,7 @@ function AddIncome() {
                         <select value={category} onChange={(e) => setCategory(e.target.value)} style={{height: "48px"}} className="input w-100 rounded-2 p-2" name="" id="" required>
                             <option value="">Choose category</option>
                             <option value="Freelance">Freelance</option>
-                            <option value="Bussiness">Business</option>
+                            <option value="Business">Business</option>
                             <option value="Investment">Investment</option>
                             <option value="Sell of an item">Sell of an item</option>
                             <option value="Other">Other</option>
