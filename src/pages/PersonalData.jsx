@@ -7,6 +7,8 @@ function PersonalData() {
     const navigate = useNavigate();
     const [name, setName] = useState('')
     const [salary, setSalary] = useState('');
+    const [clearIncomes, setClearIncomes] = useState(false);
+    const [clearExpenses, setClearExpenses] = useState(false);
     const [salaryDate, setSalaryDate] = useState('');
 
 
@@ -18,7 +20,10 @@ function PersonalData() {
             name: String(name),
             salary: Number(salary),
             salaryDate: Number(salaryDate),
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().toISOString(),
+            clearExpenses: false,
+            clearIncomes: false,
+            currency: "EGP"
         };
 
         // Save to localStorage

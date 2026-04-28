@@ -16,6 +16,7 @@ function Dashboard() {
     const [salaryDate, setSalaryDate] = useState(1);
     const [currentBudget, setCurrentBudget] = useState(0);
     const [username, setUsername] = useState('User');
+    const [currency, setCurrency] = useState('EGP');
 
     // Load personal data from localStorage
     useEffect(() => {
@@ -25,6 +26,7 @@ function Dashboard() {
             setSalary(data.salary || 0);
             setSalaryDate(data.salaryDate || 1);
             setUsername(data.name || 'User');
+            setCurrency(data.currency || 'EGP');
         }
     }, [location]);
 
@@ -118,40 +120,44 @@ function Dashboard() {
     };
 
     useEffect(() => {
+    const checkReset = () => {
         const today = new Date();
         const currentDay = today.getDate();
-        
-        // Get last reset date from localStorage
-        const lastResetDate = localStorage.getItem('lastResetDate');
-        const alertShown = localStorage.getItem('resetAlertShown');
         const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
-        
-        // Check if today is the salary day and we haven't reset this month
+
+        const lastResetDate = localStorage.getItem("lastResetDate");
+        const alertShown = localStorage.getItem("resetAlertShown");
+
         if (currentDay === salaryDate && salaryDate !== 0) {
-            const currentMonthKey = `${currentYear}-${currentMonth}`;
-            
-            if (lastResetDate !== currentMonthKey) {
-                // Reset expenses and incomes
-                localStorage.setItem('expenses', JSON.stringify([]));
-                localStorage.setItem('incomes', JSON.stringify([]));
-                localStorage.setItem('lastResetDate', currentMonthKey);
-                
-                // Clear the recent expenses and incomes from state
-                setRecentExpenses([]);
-                setRecentIncomes([]);
-                setCurrentBudget(salary);
-                
-                // Show alert only if not shown yet for this month
-                if (alertShown !== currentMonthKey) {
-                    setShowAlert(true);
-                    setAlertMessage("New month started! Budget has been reset. Don't forget to <span style={{backgroundColor: '#315DED'}}>spend wise</span>");
-                    setTimeout(() => setShowAlert(false), 3000);
-                    localStorage.setItem('resetAlertShown', currentMonthKey);
-                }
+        const currentMonthKey = `${currentYear}-${currentMonth}`;
+
+        if (lastResetDate !== currentMonthKey) {
+            localStorage.setItem("expenses", JSON.stringify([]));
+            localStorage.setItem("incomes", JSON.stringify([]));
+            localStorage.setItem("lastResetDate", currentMonthKey);
+
+            setRecentExpenses([]);
+            setRecentIncomes([]);
+            setCurrentBudget(salary);
+
+            if (alertShown !== currentMonthKey) {
+            setShowAlert(true);
+            setAlertMessage("New month started! Budget reset.");
+            setTimeout(() => setShowAlert(false), 3000);
+
+            localStorage.setItem("resetAlertShown", currentMonthKey);
             }
         }
-    }, [salaryDate, salary]);
+        }
+    };
+
+  checkReset(); // run immediately
+
+  const interval = setInterval(checkReset, 60 * 60 * 1000); // every hour
+
+  return () => clearInterval(interval);
+}, [salaryDate, salary]);
 
     // Format next salary date
     const formatNextSalaryDate = () => {
@@ -201,6 +207,68 @@ function Dashboard() {
     const capitalize = (str) =>
         str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
 
+    const [clearIncomes, setClearIncomes] = useState(false);
+    const [clearExpenses, setClearExpenses] = useState(false);
+
+    // Load saved preferences when component mounts
+    useEffect(() => {
+        const savedPreferences = localStorage.getItem('savedData');
+        if (savedPreferences) {
+            const prefs = JSON.parse(savedPreferences);
+            setClearIncomes(prefs.clearIncomes || false);
+            setClearExpenses(prefs.clearExpenses || false);
+        }
+
+        // Check if we need to clear data (new month)
+        checkAndClearMonthlyData();
+    }, []);
+
+    // Check if it's a new month and clear data if needed
+    const checkAndClearMonthlyData = () => {
+        const lastCheckedMonth = localStorage.getItem('lastCheckedMonth');
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+        const currentMonthKey = `${currentYear}-${currentMonth}`;
+
+        // If it's a new month
+        if (lastCheckedMonth !== currentMonthKey) {
+            const savedPreferences = localStorage.getItem('userPreferences');
+            
+            if (savedPreferences) {
+                const prefs = JSON.parse(savedPreferences);
+                
+                // Clear incomes if preference is enabled
+                if (prefs.clearIncomes) {
+                    localStorage.setItem('incomes', JSON.stringify([]));
+                }
+                
+                // Clear expenses if preference is enabled
+                if (prefs.clearExpenses) {
+                    localStorage.setItem('expenses', JSON.stringify([]));
+                }
+            }
+            
+            // Update last checked month
+            localStorage.setItem('lastCheckedMonth', currentMonthKey);
+        }
+    };
+
+    // Save preferences
+    const handleSave = (e) => {
+        e.preventDefault();
+        
+        const preferences = {
+            clearIncomes,
+            clearExpenses,
+            currency
+        };
+        
+        localStorage.setItem('userPreferences', JSON.stringify(preferences));
+        
+        // Show success message
+        alert('Settings saved successfully!');
+    }
+
     return(
         <div className='w-100 py-0 py-lg-2 p-lg-5 p-3 d-flex flex-column justify-content-beteen gap-4 gap-lg-3'>
             {showAlert && (
@@ -221,7 +289,7 @@ function Dashboard() {
                         </div>
                     ) : (
                         <div className='position-relative w-100 py-5 px-0 px-lg-5 px-md-1 d-flex gap-2 gap-xl-4 gap-xxl-0 justify-content-evenly flex-column flex-xxl-row'>
-                            <a href='personal-data' className='edit-1'>Edit</a>
+                            <a href='settings' className='edit-1'>Edit</a>
                             <div className='d-flex align-items-center mx-5 justify-content-center w-auto h-100'>
                             <AnimatedCircularProgress 
                                 percentage={calculateBudgetPercentage()} 
@@ -235,11 +303,27 @@ function Dashboard() {
                                 <div className='data-container d-flex flex-column align-items-start justify-content-center w-auto'>
                                     <div>
                                         <h5>Current budget</h5>
-                                        <h1 className="fw-medium">{formatNumber(currentBudget)} <span className='h4' style={{color: "gray"}}>EGP</span></h1>
+                                        {(currency == "$" || currency == "€") ? (
+                                            <div>
+                                                <h1 className="fw-medium"><span>{currency}</span>{formatNumber(currentBudget)}</h1>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <h1 className="fw-medium">{formatNumber(currentBudget)}<span className='h4' style={{color: "gray"}}> {currency}</span></h1>
+                                            </div>
+                                        )}
                                     </div>
                                     <div>
                                         <h5>Out of</h5>
-                                        <h1 className="fw-medium">{formatNumber(salary)} <span className='h4' style={{color: "gray"}}>EGP</span></h1>
+                                        {(currency == "$" || currency == "€") ? (
+                                            <div>
+                                                <h1 className="fw-medium"><span>{currency}</span>{formatNumber(salary)}</h1>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <h1 className="fw-medium">{formatNumber(salary)}<span className='h4' style={{color: "gray"}}> {currency}</span></h1>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className='data-container d-flex flex-column align-items-start justify-content-center w-auto'>
@@ -276,7 +360,12 @@ function Dashboard() {
                                             <h3 className="recent-expense-date m-0 fw-semibold">{formatDate(expense.date)}</h3>
                                         </div>
                                         <div className="d-flex align-items-center">
-                                            <h2 className="recent-expense-number m-0 text-danger mx-2"> - {formatNumber(expense.amount)} <span>EGP</span></h2>
+                                            {(currency == "$" || currency == "€") ? (
+                                                <h1 className="recent-expense-number m-0 text-danger mx-2">+ {currency}{formatNumber(expense.amount)}</h1>
+                                        ) : (
+                                                <h1 className="recent-expense-number m-0 text-danger mx-2">+ {formatNumber(expense.amount)}<span className='h4 text-danger'> {currency}</span></h1>
+
+                                        )}
                                         </div>
                                     </div>
                                 ))
@@ -310,7 +399,11 @@ function Dashboard() {
                                                 <h3 className="recent-income-date m-0 fw-semibold">{formatDate(income.date)}</h3>
                                             </div>
                                             <div className="d-flex align-items-center">
-                                                <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>
+                                                 {(currency == "$" || currency == "€") ? (
+                                                    <h1 className="recent-expense-number m-0 text-success mx-2">+ {currency}{formatNumber(income.amount)}</h1>
+                                                ) : (
+                                                    <h1 className="recent-expense-number m-0 text-success mx-2">+ {formatNumber(income.amount)}<span className='h4 text-success'> {currency}</span></h1>
+                                                )}
                                             </div>
                                         </div>
                                 ))

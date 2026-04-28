@@ -9,6 +9,15 @@ export default function Analytics() {
     const [expenses, setExpenses] = useState([]);
     const [recentExpenses, setRecentExpenses] = useState([])
     const [topThree, setTopThree] = useState([]);
+    const [currency, setCurrency] = useState('EGP');
+
+    useEffect(() => {
+        const savedData = localStorage.getItem("personalData")
+        if (savedData) {
+            const data = JSON.parse(savedData)
+            setCurrency(data.currency || "EGP")
+        }
+    }, [location])
 
     useEffect(() => {
     const savedExpenses = localStorage.getItem("expenses");
@@ -46,7 +55,7 @@ export default function Analytics() {
       const categoryColors = {
         'Shopping': '#F4B940',
         'Groceries': '#4169E1',
-        'Hangouts': '#50C878',
+        'Entertainment': '#50C878',
         'Bills': '#C84B4B',
         'Transport': '#9B59B6',
         'Other': '#EBFF7B',
@@ -121,7 +130,7 @@ export default function Analytics() {
 
   const groceriesSegment = segments.find(seg => seg.category === 'Groceries');
   const shoppingSegment = segments.find(seg => seg.category === 'Shopping');
-  const hangoutsSegment = segments.find(seg => seg.category === 'Hangouts');
+  const entertainmentSegment = segments.find(seg => seg.category === 'Entertainment');
   const billsSegment = segments.find(seg => seg.category === 'Bills');
   const transportsSegment = segments.find(seg => seg.category === 'Transport');
   const healthSegment = segments.find(seg => seg.category === 'Health');
@@ -226,7 +235,7 @@ export default function Analytics() {
                         {/* Legend */}
                         <div className="d-flex flex-row flex-lg-column flex-wrap justify-content-center">
                         {segments.map((segment, index) => (
-                            <div key={index} className="">
+                            <div key={index}>
                                 <div className="d-flex align-items-center p-2 rounded">
                                     <div
                                     style={{
@@ -269,10 +278,10 @@ export default function Analytics() {
                     <div className="spending-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#C3FFB4"}}> 
                         <div className="d-flex align-items-center">
                             <div style={{backgroundColor: "#369E1C", marginRight: "16px"}} className="dot"></div>
-                            <h3 style={{color: "#369E1C"}} className="mx-2 m-0">Hangouts</h3>
+                            <h3 style={{color: "#369E1C"}} className="mx-2 m-0">Entertainment</h3>
                         </div>
                         <div className="amount p-2 rounded-2">
-                            <h5 className="m-0 fw-semibold">{hangoutsSegment ? hangoutsSegment.amount.toLocaleString() : 0} <span style={{fontSize: "14px"}}>EGP</span></h5>
+                            <h5 className="m-0 fw-semibold">{entertainmentSegment ? entertainmentSegment.amount.toLocaleString() : 0} <span style={{fontSize: "14px"}}>EGP</span></h5>
                         </div>
                     </div>
                     <div className="spending-category d-flex align-items-center p-2 px-4 rounded-3 w-75 justify-content-between" style={{backgroundColor: "#FFB2B2"}}> 
@@ -332,7 +341,11 @@ export default function Analytics() {
                                             <h3 className="recent-expense-date m-0 fw-semibold">{formatDate(expense.date)}</h3>
                                         </div>
                                         <div className="d-flex align-items-center">
-                                            <h2 className="recent-expense-number m-0 text-danger mx-2">- {formatNumber(expense.amount)} <span>EGP</span></h2>
+                                            {(currency == "$" || currency == "€") ? (
+                                            <h1 className="recent-expense-number m-0 text-danger mx-2">+ {currency}{formatNumber(expense.amount)}</h1>
+                                            ) : (
+                                                <h1 className="recent-expense-number m-0 text-success mx-2">+ {formatNumber(expense.amount)}<span className='h4 text-danger'> {currency}</span></h1>
+                                            )}
                                         </div>
                                     </div>
                                 )

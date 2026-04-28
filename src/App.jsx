@@ -2,6 +2,8 @@ import { use, useState } from 'react'
 import './App.css'
 import { Link, Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AddExpense from './pages/AddExpense'
 import Dashboard from './pages/Dashboard'
 import AddIncome from './pages/AddIncome'
@@ -50,8 +52,8 @@ function App() {
             <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark' to="/">Dashboard</Link></li>
             <li className='my-2'><Link onClick={() => setAnalyticsOpen(true)} className='text-decoration-none text-dark' >Analytics</Link></li>
             <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-1 rounded-2 m-0`}>
-              <NavLink className="text-decoration-none text-dark my-1" to="/expenses-analytics">Expenses</NavLink>
-              <NavLink className="text-decoration-none text-dark my-1" to="/incomes-analytics">Incomes</NavLink>
+              <NavLink className="text-decoration-none text-dark my-1" to="/expenses-analytics">- Expenses</NavLink>
+              <NavLink className="text-decoration-none text-dark my-1" to="/incomes-analytics">- Incomes</NavLink>
             </div>
             <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark' to="/settings">Settings</Link></li>
           </ul>
@@ -76,6 +78,7 @@ function App() {
           <Route path='/incomes-analytics' element={<IncomesAnalytics />} />
         </Routes>
       </article>
+      <ToastContainer />
     </div>
   )
 }

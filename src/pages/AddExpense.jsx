@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import '../AddExpense.css'
 
 function AddExpense() {
@@ -83,7 +86,7 @@ function AddExpense() {
                             <option value="">Choose category</option>
                             <option value="Groceries">Groceries</option>
                             <option value="Shopping">Shopping</option>
-                            <option value="Hangouts">Hangouts</option>
+                            <option value="Entertainment">Entertainment</option>
                             <option value="Bills">Bills</option>
                             <option value="Transport">Transport</option>
                             <option value="Health">Health</option>

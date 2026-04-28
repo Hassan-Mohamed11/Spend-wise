@@ -6,6 +6,15 @@ export default function IncomesAnalytics() {
 
     const [incomes, setIncomes] = useState([]);
     const [topThree, setTopThree] = useState([]);
+    const [currency, setCurrency] = useState('EGP');
+
+    useEffect(() => {
+        const savedData = localStorage.getItem("personalData")
+        if (savedData) {
+            const data = JSON.parse(savedData)
+            setCurrency(data.currency || "EGP")
+        }
+    }, [location])
 
     // Load top 3 highest incomes
     useEffect(() => {
@@ -308,7 +317,11 @@ export default function IncomesAnalytics() {
                                         <h3 className="recent-income-date m-0 fw-semibold">{formatDate(income.date)}</h3>
                                     </div>
                                     <div className="d-flex align-items-center">
-                                        <h2 className="recent-income-number m-0 text-success mx-2">+ {formatNumber(income.amount)} <span>EGP</span></h2>
+                                        {(currency == "$" || currency == "€") ? (
+                                            <h1 className="recent-expense-number m-0 text-success mx-2">+ {currency}{formatNumber(income.amount)}</h1>
+                                        ) : (
+                                            <h1 className="recent-expense-number m-0 text-success mx-2">+ {formatNumber(income.amount)}<span className='h4 text-success'> {currency}</span></h1>
+                                        )}
                                     </div>
                                 </div>
                             ))
