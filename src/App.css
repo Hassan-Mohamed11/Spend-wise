@@ -261,7 +261,7 @@ article {
 
 @media (max-width: 768px) {
   .recent-expense-category, .recent-income-category {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .recent-expense-number, .recent-income-number {
@@ -318,11 +318,11 @@ article {
   }
 
   .recent-expense-item {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .recent-income-item {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 
@@ -332,11 +332,11 @@ article {
   }
 
   .recent-expense-item {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .recent-income-item {
-    font-size: 18px;
+    font-size: 16px;
   }
 
 }
