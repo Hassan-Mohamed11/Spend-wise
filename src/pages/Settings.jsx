@@ -42,8 +42,8 @@ export default function Settings() {
   }; 
 
     return(
-        <div style={{height: "100vh"}} className="w-100 d-flex flex-column align-items-center justify-content-center p-5 gap-4">
-            <div className="d-flex flex-column p-5 bg-white w-100 h-50 rounded-3">
+        <div style={{height: "100vh"}} className="w-100 d-flex flex-column align-items-center justify-content-center p-2 p-lg-5 gap-4">
+            <div className="d-flex flex-column p-4 p-lg-5 bg-white w-100 h-50 rounded-3">
                 <h2>Personal information</h2>
                 <div className="w-100 d-flex flex-column justify-content-center h-100">
                     <div className="my-2">
@@ -70,7 +70,7 @@ export default function Settings() {
                     <button onClick={handleSave} type="submit" className="btn btn-primary my-2">Save</button>
                 </div>
             </div>
-            <div className="d-flex flex-column p-5 bg-white w-100 h-50 rounded-3">
+            <div className="d-flex flex-column p-4 p-lg-5 bg-white w-100 h-50 rounded-3">
                 <h2>Customizations</h2>
                 <div className="w-100 d-flex flex-column justify-content-center h-100">
                     <div className="d-flex align-items-center">

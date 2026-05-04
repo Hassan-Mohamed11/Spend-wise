@@ -361,9 +361,9 @@ function Dashboard() {
                                         </div>
                                         <div className="d-flex align-items-center">
                                             {(currency == "$" || currency == "€") ? (
-                                                <h1 className="recent-expense-number m-0 text-danger mx-2">+ {currency}{formatNumber(expense.amount)}</h1>
+                                                <h1 className="recent-expense-number m-0 text-danger mx-2">- {currency}{formatNumber(expense.amount)}</h1>
                                         ) : (
-                                                <h1 className="recent-expense-number m-0 text-danger mx-2">+ {formatNumber(expense.amount)}<span className='h4 text-danger'> {currency}</span></h1>
+                                                <h1 className="recent-expense-number m-0 text-danger mx-2">- {formatNumber(expense.amount)}<span className='h4 text-danger'> {currency}</span></h1>
 
                                         )}
                                         </div>
