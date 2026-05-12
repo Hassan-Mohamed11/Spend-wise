@@ -136,9 +136,6 @@ article {
       padding: 4px 26px;
       font-size: 20px;
   }
-
-
-
 }
 
 @media (max-width: 991px) {
@@ -160,27 +157,19 @@ article {
   }
 }
 
-.mobile-sidebar-closed {
-    transform: translateX(-120%);
-    position: absolute;
-    transition: 0.3s;
-    height: 100vh;
-    width: 324px;
-    padding: 16px;
-    z-index: 100;
-    margin: 0;
-  }
-
 .mobile-sidebar-open {
   transform: translateX(0);
-  position: absolute;
+  position: fixed;
   background-color: white;
-  height: 200vh;
-  width: fit-content;
-  padding: 16px;
-  z-index: 100;
-  margin: 0;
-  transition: 0.3s;
+  width: 100%;
+  height: fit-content;
+  display: flex !important;
+  bottom: 0;
+  right: 0;
+}
+
+.active-link {
+  color: #315DED;
 }
 
 .expenses, .incomes {

@@ -178,7 +178,7 @@ export default function IncomesAnalytics() {
     const gap = 25;
 
     return(
-        <div className="w-100 px-2 py-0 px-lg-5 py-3">
+        <div style={{marginBottom: "72px"}} className="w-100 px-2 py-0 px-lg-5 py-3">
             <h1 className="d-none d-lg-flex">Incomes Analytics</h1>
             <div style={{backgroundColor: "white"}} className="rounded-4 p-3 shadow-sm d-flex flex-column align-items-center flex-xl-row justify-content-evenly">
                 <div className="d-flex align-items-center justify-content-center w-50">

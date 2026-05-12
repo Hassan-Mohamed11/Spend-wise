@@ -2,6 +2,7 @@ import { use, useState } from 'react'
 import './App.css'
 import { Link, Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddExpense from './pages/AddExpense'
@@ -17,8 +18,8 @@ import IncomesAnalytics from './pages/IncomesAnalytics'
 
 function App() {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [analyticsOpen, setAnalyticsOpen] = useState(false)
+  const [linkState, setLinkState] = useState(false)
   const location = useLocation();
 
   return (
@@ -29,7 +30,6 @@ function App() {
             <img className='logo' src="./spendWise-logo.png" alt="" />
             <Link className='text-decoration-none fs-2 fw-medium mx-1' to="/">SpendWise</Link>
           </div>
-          <img className='d-block d-lg-none' onClick={() => setSidebarOpen(!sidebarOpen)} width={38} src="./menu.png" alt="" />
         </div>
         <div className="my-4 fw-medium fs-4 text-dark d-lg-block d-none w-100">
           <ul className='list-unstyled w-100'>
@@ -43,28 +43,22 @@ function App() {
           </ul>
         </div>
       </aside>
-      <div className={`${sidebarOpen ? 'mobile-sidebar-open' : 'mobile-sidebar-closed'} fw-medium fs-4 text-dark d-lg-none d-block`}>
-          <div className='d-flex align-items-center'>
-            <img className='logo' src="./spendWise-logo.png" alt="" />
-            <a className='text-decoration-none fs-2 fw-medium mx-1' href="/">SpendWise</a>
-          </div>
-          <ul className='list-unstyled my-4'>
-            <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark' to="/">Dashboard</Link></li>
-            <li className='my-2'><Link onClick={() => setAnalyticsOpen(true)} className='text-decoration-none text-dark' >Analytics</Link></li>
-            <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-1 rounded-2 m-0`}>
-              <NavLink className="text-decoration-none text-dark my-1" to="/expenses-analytics">- Expenses</NavLink>
-              <NavLink className="text-decoration-none text-dark my-1" to="/incomes-analytics">- Incomes</NavLink>
+      <div style={{zIndex: 99}} className={`mobile-sidebar-open fw-medium fs-4 text-dark d-lg-none d-block shadow-lg`}>
+          <div className='d-flex w-100 justify-content-evenly p-1 py-3'>
+            <div className='d-flex flex-column align-items-center'>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/"><i class="fa-solid fa-bars fa-xl"></i></NavLink>
+              <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/">Dashboard</NavLink>
             </div>
-            <li className='my-2'><Link onClick={() => setAnalyticsOpen(false)} className='text-decoration-none text-dark' to="/settings">Settings</Link></li>
-          </ul>
+            <div className='d-flex flex-column align-items-center'>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/expenses-analytics"><i class="fa-solid fa-chart-simple fa-xl"></i></NavLink>
+              <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/expenses-analytics">Analytics</NavLink>
+            </div>
+            <div className='d-flex flex-column align-items-center'>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/settings"><i class="fa-solid fa-gear fa-xl"></i></NavLink>
+              <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/settings">Settings</NavLink>
+            </div>
+          </div>
         </div>
-        {sidebarOpen && (
-        <div 
-          className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-lg-none"
-          style={{ zIndex: 99 }}
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
       <article className='w-100'>
         <Routes>
           <Route path="/" element={<Dashboard />}/>

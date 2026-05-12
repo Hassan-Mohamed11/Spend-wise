@@ -270,7 +270,7 @@ function Dashboard() {
     }
 
     return(
-        <div className='w-100 py-0 py-lg-2 p-lg-5 p-3 d-flex flex-column justify-content-beteen gap-4 gap-lg-3'>
+        <div style={{marginBottom: "72px"}} className='w-100 py-0 py-lg-2 p-lg-5 p-3 d-flex flex-column justify-content-beteen gap-4 gap-lg-3'>
             {showAlert && (
                 <div className="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3" style={{zIndex: 1050, minWidth: '400px'}} role="alert">
                     <strong>Success!</strong> {alertMessage}
