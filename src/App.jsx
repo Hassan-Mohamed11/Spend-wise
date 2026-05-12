@@ -44,17 +44,17 @@ function App() {
         </div>
       </aside>
       <div style={{zIndex: 99}} className={`mobile-sidebar-open fw-medium fs-4 text-dark d-lg-none d-block shadow-lg`}>
-          <div className='d-flex w-100 justify-content-evenly p-1 py-3'>
+          <div className='d-flex w-100 justify-content-evenly p-1 py-2'>
             <div className='d-flex flex-column align-items-center'>
-              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/"><i class="fa-solid fa-bars fa-xl"></i></NavLink>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/"><i class="fa-solid fa-bars fa-lg"></i></NavLink>
               <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/">Dashboard</NavLink>
             </div>
             <div className='d-flex flex-column align-items-center'>
-              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/expenses-analytics"><i class="fa-solid fa-chart-simple fa-xl"></i></NavLink>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/expenses-analytics"><i class="fa-solid fa-chart-simple fa-lg"></i></NavLink>
               <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/expenses-analytics">Analytics</NavLink>
             </div>
             <div className='d-flex flex-column align-items-center'>
-              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/settings"><i class="fa-solid fa-gear fa-xl"></i></NavLink>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/settings"><i class="fa-solid fa-gear fa-lg"></i></NavLink>
               <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/settings">Settings</NavLink>
             </div>
           </div>
