@@ -1,0 +1,113 @@
+.logo {
+    width:48px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width:36px;
+    }
+}
+
+.hero-container {
+    overflow-x: hidden;
+    bottom: 48px;
+    height: 75%;
+}
+
+.hero-image {
+    height: 100vh;
+    object-fit: cover;
+}
+
+.hero-text {
+    font-family: "satoshi", sans-serif;
+    font-weight: 600;
+    font-size: clamp(3rem, 6.6vw, 7rem);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out forwards;
+}
+
+.coin {
+    position: relative;
+    width: 502px;
+    height: auto;
+    margin-left: -448px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out forwards;
+}
+
+.multiple-coins {
+    position: relative;
+    width: 502px;
+    height: auto;
+    margin-right: -448px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1468px) {
+
+    .hero-text-container {
+        margin-bottom: 108px !important;
+    }
+
+    .coins-container {
+        margin-top: 108px !important;
+    }
+
+}
+
+@media (max-width: 828px) {
+    .coin {
+        margin-left: -156px;
+        width: 314px !important;
+    }
+
+    .multiple-coins {
+        margin-right: -156px;
+        width: 314px !important;
+    }
+
+}
+
+.left-side {
+    border: none;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #252531 0 10px,
+            transparent 10px 18px
+        ) left top / 1px 100% no-repeat,
+        repeating-linear-gradient(
+            to right,
+            #252531 0 10px,
+            transparent 10px 18px
+        ) left top / 100% 1px no-repeat;
+}
+
+.left-side h1 {
+    font-size: clamp(2.5rem, 3vw, 4rem);
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #315DED;
+    margin: 4px;
+}

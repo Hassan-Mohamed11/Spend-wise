@@ -17,7 +17,7 @@ aside {
 
 .logo {
   width: 42px;
-  height: 40px;
+  height: auto;
 }
 
 .nav-link {

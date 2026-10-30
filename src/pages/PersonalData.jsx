@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../PersonalData.css"
 
 function PersonalData() {
@@ -30,7 +30,7 @@ function PersonalData() {
         localStorage.setItem('personalData', JSON.stringify(personalData));
 
         // Navigate to dashboard with success message
-        navigate('/', { 
+        navigate('/dashboard', { 
             state: { 
                 showAlert: true, 
                 message: 'Personal data saved successfully!' 
@@ -44,7 +44,7 @@ function PersonalData() {
                 <div className="w-100">
                     <div className="d-flex justify-content-between align-items-center">
                         <h3 className="m-0">Edit your personal data</h3>
-                        <a className="exit text-decoration-none btn-secondary" href="/">Go back</a>
+                        <Link className="exit text-decoration-none btn-secondary" to="/dashboard">Go back</Link>
                     </div>
                     <div className="w-100 mt-5">
                         <h5>Your name</h5>

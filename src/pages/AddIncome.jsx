@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import '../AddIncome.css'
 
 function AddIncome() {
@@ -46,7 +46,7 @@ function AddIncome() {
         setCategory('')
 
         // Optional: show success message
-        navigate('/', { state: { showAlert: true, message: 'Income added successfully!' } });
+        navigate('/dashboard', { state: { showAlert: true, message: 'Income added successfully!' } });
         
     }
     return(
@@ -55,7 +55,7 @@ function AddIncome() {
                 <div className="w-100">
                     <div className="d-flex justify-content-between">
                         <h3>Add income</h3>
-                        <a className="exit text-decoration-none" href="/">Go back</a>
+                        <Link className="exit text-decoration-none" to="/dashboard">Go back</Link>
                     </div>
                     <div className="w-100 mt-5 mb-1">
                         <h5>Amount</h5>

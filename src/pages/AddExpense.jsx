@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -50,7 +50,7 @@ function AddExpense() {
         setCategory('')
 
         // Optional: show success message
-        navigate('/', { state: { showAlert: true, message: 'Expense added successfully!' } });
+        navigate('/dashboard', { state: { showAlert: true, message: 'Expense added successfully!' } });
         
     }
     return(
@@ -59,7 +59,7 @@ function AddExpense() {
                 <div className="w-100">
                     <div className="d-flex justify-content-between">
                         <h3>Add expense</h3>
-                        <a className="exit text-decoration-none" href="/">Go back</a>
+                        <Link className="exit text-decoration-none" to="/dashboard">Go back</Link>
                     </div>
                     <div className="w-100 mt-5 mb-1">
                         <h5>Amount</h5>

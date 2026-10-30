@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../incomesAnalytics.css"
 
 export default function IncomesAnalytics() {
@@ -178,9 +179,13 @@ export default function IncomesAnalytics() {
     const gap = 25;
 
     return(
-        <div style={{marginBottom: "72px"}} className="w-100 px-2 py-0 px-lg-5 py-3">
-            <h1 className="d-none d-lg-flex">Incomes Analytics</h1>
-            <div style={{backgroundColor: "white"}} className="rounded-4 p-3 shadow-sm d-flex flex-column align-items-center flex-xl-row justify-content-evenly">
+        <div style={{marginBottom: "72px"}} className="w-100 px-2 py-0 py-lg-4 px-lg-5 py-3 d-flex flex-column align-items-center">
+            <div className="bg-white position-relative d-flex justify-content-between d-lg-none rounded-5 mb-2">
+                <Link className="text-decoration-none text-dark p-2 px-3" to="/expenses-analytics">Expenses</Link>
+                <Link className=" text-decoration-none text-dark p-2 px-3  text-white rounded-5 z-2" to="/incomes-analytics">Incomes</Link>
+                <div style={{right: 0}} className="incomes-link z-0 text-decoration-none text-dark p-2 px-3 bg-primary text-white rounded-5 position-absolute w-50 h-100"></div>
+            </div>
+            <div style={{backgroundColor: "white"}} className="rounded-4 p-3 shadow-sm d-flex flex-column align-items-center flex-xl-row justify-content-evenly w-100">
                 <div className="d-flex align-items-center justify-content-center w-50">
                     <div className="p-4 rounded-4 d-flex flex-column flex-lg-row align-items-center" style={{ maxWidth: '500px' }}>
                         

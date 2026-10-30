@@ -14,6 +14,7 @@ import IncomesTable from './pages/IncomesTable'
 import Settings from './pages/Settings'
 import ExpensesAnalytics from './pages/ExpensesAnalytics'
 import IncomesAnalytics from './pages/IncomesAnalytics'
+import Home from './Home'
 
 
 function App() {
@@ -22,46 +23,53 @@ function App() {
   const [linkState, setLinkState] = useState(false)
   const location = useLocation();
 
+  const isHome = location.pathname === '/';
+
   return (
     <div className='d-flex flex-column flex-lg-row'>
-      <aside className="p-3 d-flex flex-lg-column flex-row justify-content-start">
-        <div className='d-flex justify-content-between w-100'>
-          <div className='d-flex align-items-center'>
-            <img className='logo' src="./spendWise-logo.png" alt="" />
-            <Link className='text-decoration-none fs-2 fw-medium mx-1' to="/">SpendWise</Link>
-          </div>
-        </div>
-        <div className="my-4 fw-medium fs-4 text-dark d-lg-block d-none w-100">
-          <ul className='list-unstyled w-100'>
-            <li><NavLink onClick={() => setAnalyticsOpen(false)} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/">Dashboard</NavLink></li>
-            <li><NavLink onClick={() => setAnalyticsOpen(true)} className={({ isActive }) => location.pathname === "/expenses-analytics" || location.pathname === "/incomes-analytics"  ? "nav-link active" : "nav-link"} to="/expenses-analytics">Analytics</NavLink></li>
-            <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-2`}>
-              <NavLink className={({ isActive }) => isActive ? "analytic-link open" : "analytic-link text-dark"} to="/expenses-analytics">Expenses</NavLink>
-              <NavLink className={({ isActive }) => isActive ? "analytic-link open" : "analytic-link text-dark"}  to="/incomes-analytics">Incomes</NavLink>
+      {!isHome && (
+        <aside className="p-3 d-flex flex-lg-column flex-row justify-content-start">
+          <div className='d-flex justify-content-between w-100'>
+            <div className='d-flex align-items-center'>
+              <img className='logo' src="./spendWise-logo.png" alt="" />
+              <Link className='text-decoration-none fs-2 fw-medium mx-1' to="/dashboard">SpendWise</Link>
             </div>
-            <li className=''><NavLink onClick={() => setAnalyticsOpen(false)} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/settings">Settings</NavLink></li>
-          </ul>
-        </div>
-      </aside>
-      <div style={{zIndex: 99}} className={`mobile-sidebar-open fw-medium fs-4 text-dark d-lg-none d-block shadow-lg`}>
+          </div>
+          <div className="my-4 fw-medium fs-4 text-dark d-lg-block d-none w-100">
+            <ul className='list-unstyled w-100'>
+              <li><NavLink onClick={() => setAnalyticsOpen(false)} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/dashboard">Dashboard</NavLink></li>
+              <li><NavLink onClick={() => setAnalyticsOpen(true)} className={({ isActive }) => location.pathname === "/expenses-analytics" || location.pathname === "/incomes-analytics"  ? "nav-link active" : "nav-link"} to="/expenses-analytics">Analytics</NavLink></li>
+              <div className={`${analyticsOpen ? "analytics-open" : "analytics-closed"} flex-column p-2`}>
+                <NavLink className={({ isActive }) => isActive ? "analytic-link open" : "analytic-link text-dark"} to="/expenses-analytics">Expenses</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "analytic-link open" : "analytic-link text-dark"}  to="/incomes-analytics">Incomes</NavLink>
+              </div>
+              <li className=''><NavLink onClick={() => setAnalyticsOpen(false)} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/settings">Settings</NavLink></li>
+            </ul>
+          </div>
+        </aside>
+      )}
+      {!isHome && (
+        <div style={{zIndex: 99}} className={`mobile-sidebar-open fw-medium fs-4 text-dark d-lg-none d-block shadow-lg`}>
           <div className='d-flex w-100 justify-content-evenly p-1 py-2'>
             <div className='d-flex flex-column align-items-center'>
-              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/"><i class="fa-solid fa-bars fa-lg"></i></NavLink>
-              <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/">Dashboard</NavLink>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/dashboard"><i className="fa-solid fa-bars fa-lg"></i></NavLink>
+              <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/dashboard">Dashboard</NavLink>
             </div>
             <div className='d-flex flex-column align-items-center'>
-              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/expenses-analytics"><i class="fa-solid fa-chart-simple fa-lg"></i></NavLink>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/expenses-analytics"><i className="fa-solid fa-chart-simple fa-lg"></i></NavLink>
               <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/expenses-analytics">Analytics</NavLink>
             </div>
             <div className='d-flex flex-column align-items-center'>
-              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/settings"><i class="fa-solid fa-gear fa-lg"></i></NavLink>
+              <NavLink className={({ isActive }) => isActive ? "active-link" : "text-dark"} to="/settings"><i className="fa-solid fa-gear fa-lg"></i></NavLink>
               <NavLink className={({ isActive }) => `text-decoration-none fs-6 ${isActive ? "active-link" : "text-dark"}`} to="/settings">Settings</NavLink>
             </div>
           </div>
         </div>
+      )}
       <article className='w-100'>
         <Routes>
-          <Route path="/" element={<Dashboard />}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/dashboard" element={<Dashboard />}/>
           <Route path="/add-expense" element={<AddExpense />}/>
           <Route path="/add-income" element={<AddIncome />}/>
           <Route path='/personal-data' element={<PersonalData />} />
@@ -78,3 +86,4 @@ function App() {
 }
 
 export default App
+
