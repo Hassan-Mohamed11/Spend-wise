@@ -12,7 +12,7 @@ function Home() {
             <div style={{height: "100vh"}} className='d-flex flex-column'>
                 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet"></link>
                 <img style={{right: 0, top: 0, zIndex: -1}} className='w-100 position-absolute img-fluid hero-image' src={bg} alt="" />
-                <nav className='p-3 p-lg-0 navbar d-flex justify-content-center'>
+                <nav className='p-3 p-lg-0 navbar d-flex justify-content-start justify-content-lg-center'>
                     <div className='w-75'>
                         <div className=' d-flex align-items-center'>
                             <img className='logo img-fluid' src="./spendWise-logo.png" alt="" />

@@ -57,7 +57,7 @@ export default function Settings() {
                     <div className="my-2">
                         <h6>Salary date</h6>
                         <select onChange={(e) => setSalaryDate(e.target.value)} value={salaryDate} className="input w-100 rounded-2 p-2" required>
-                            <option value="">Salary date</option>
+                            <option value="" disabled selected>Salary date</option>
                             {Array.from({ length: 31 }, (_, i) => (
                                 <option key={i + 1} value={i + 1}>
                                 Day {i + 1}

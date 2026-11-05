@@ -22,7 +22,7 @@
 .hero-text {
     font-family: "satoshi", sans-serif;
     font-weight: 600;
-    font-size: clamp(3rem, 6.6vw, 7rem);
+    font-size: clamp(2.9rem, 6.6vw, 7rem);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeUp 1s ease-out forwards;
@@ -63,11 +63,11 @@
 @media (max-width: 1468px) {
 
     .hero-text-container {
-        margin-bottom: 108px !important;
+        margin-bottom: 208px !important;
     }
 
     .coins-container {
-        margin-top: 108px !important;
+        margin-top: 8px !important;
     }
 
 }

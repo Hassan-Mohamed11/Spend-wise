@@ -1,6 +1,6 @@
-import { use, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import './App.css'
-import { Link, Routes, Route, NavLink, useLocation } from 'react-router-dom'
+import { Link, Routes, Route, NavLink, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { ToastContainer } from "react-toastify";
@@ -20,8 +20,25 @@ import Home from './Home'
 function App() {
 
   const [analyticsOpen, setAnalyticsOpen] = useState(false)
-  const [linkState, setLinkState] = useState(false)
   const location = useLocation();
+
+const navigate = useNavigate();
+
+// useEffect(() => {
+//     const alreadyVisited = sessionStorage.getItem("visited");
+
+//     if (!alreadyVisited) {
+//         const personalData = JSON.parse(
+//             localStorage.getItem("personalData") || "{}"
+//         );
+
+//         if (Number(personalData.salary) > 0) {
+//             navigate("/dashboard", { replace: true });
+//         }
+
+//         sessionStorage.setItem("visited", "true");
+//     }
+// }, []);
 
   const isHome = location.pathname === '/';
 
@@ -68,8 +85,8 @@ function App() {
       )}
       <article className='w-100'>
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/dashboard" element={<Dashboard />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard /> }/>
           <Route path="/add-expense" element={<AddExpense />}/>
           <Route path="/add-income" element={<AddIncome />}/>
           <Route path='/personal-data' element={<PersonalData />} />
